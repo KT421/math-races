@@ -1,0 +1,52 @@
+---
+title: "Math Races Workbook"
+author: "Katelyn Schreyer"
+date: "2023-04-20"
+output: html_document
+runtime: shiny
+---
+
+# Description
+
+This document is for working/scratch code for a shiny app that will produce math worksheets for kids.
+
+Starting features: Generates a worksheet of 20 math problems, in large font
+
+Addition with operands between 0 and 5
+Subtraction with operands between 0 and 5, no negative numbers in results
+
+Later features:
+Operand ranges
+Allow negative results
+Multiplication and Division
+
+# Basic Logic
+
+```{r}
+
+#Addition
+
+addition_problem <- function(range1 = 1:5, range2 = 1:5) {
+  operand1 <- sample(range1,1)
+  operand2 <- sample(range2,1)
+  paste(operand1, "+", operand2, "=")
+}
+
+# Subtraction
+subtraction_problem <- function(range1 = 1:5, range2 = 1:5, allow_negatives = F) {
+  operand1 <- sample(range1,1)
+  operand2 <- sample(range2,1)
+  
+  if (all(!allow_negatives, operand2 > operand1)) {
+    while (operand2 > operand1) {
+    operand2 <- sample(range2,1)
+    }
+  }
+  
+  paste(operand1, "-", operand2, "=")
+}
+
+```
+
+
+
