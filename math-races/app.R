@@ -26,13 +26,13 @@ subtraction_problem <- function(range1 = 1:5, range2 = 1:5, allow_negatives = F)
 
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define UI for application
 ui <- fluidPage(
 
     # Application title
     titlePanel("Math Races"),
 
-    # Sidebar with a slider input for number of bins 
+    # Sidebar with inputs 
     sidebarLayout(
         sidebarPanel(
             selectInput("operation",
@@ -62,7 +62,7 @@ ui <- fluidPage(
             actionButton("generate", "Generate Problems")
         ),
 
-        # Show a plot of the generated distribution
+        # Outputs
         mainPanel(
            htmlOutput("problem_list"),
            downloadButton("download", "Download Printable")
@@ -70,7 +70,7 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic 
 server <- function(input, output) {
 
   range1 <- eventReactive(input$generate, {
