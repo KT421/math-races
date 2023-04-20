@@ -1,0 +1,10 @@
+---
+title: "Math Races Worksheet"
+output: html_document
+params:
+  n: NA
+---
+
+Math Race go!
+
+`r paste(params$n, collapse = "\n\n")`

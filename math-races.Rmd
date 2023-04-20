@@ -27,15 +27,15 @@ Multiplication and Division
 #Addition
 
 addition_problem <- function(range1 = 1:5, range2 = 1:5) {
-  operand1 <- sample(range1,1)
-  operand2 <- sample(range2,1)
+  operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
+  operand2 <- ifelse(length(range2) == 1, range1, sample(range2,1))
   paste(operand1, "+", operand2, "=")
 }
 
 # Subtraction
 subtraction_problem <- function(range1 = 1:5, range2 = 1:5, allow_negatives = F) {
-  operand1 <- sample(range1,1)
-  operand2 <- sample(range2,1)
+  operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
+  operand2 <- ifelse(length(range2) == 1, range1, sample(range2,1))
   
   if (all(!allow_negatives, operand2 > operand1)) {
     while (operand2 > operand1) {
