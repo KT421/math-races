@@ -1,10 +1,24 @@
 ---
 title: "Math Races Worksheet"
-output: html_document
+output:   html_document
 params:
   n: NA
 ---
 
-Math Race go!
+<style type="text/css">
+  body{
+  font-size: 36pt;
+}
+  h1{
+  font-size: 50pt;
+  text-align: center;
+}
+</style>
 
-`r paste(params$n, collapse = "\n\n")`
+```{r, echo = FALSE}
+problems_df <- data.frame(a = params$n[1:10], b = params$n[11:20])
+
+```
+
+
+`r knitr::kable(problems_df)`
