@@ -39,26 +39,16 @@ ui <- fluidPage(
                         label = "Operation:",
                         choices = list("Addition",
                                        "Subtraction")),
-            sliderInput("range1start",
-                        label = "Min Value for Operand 1",
+            sliderInput("range1",
+                        label = "Value Range for Operand 1",
                         min = 0,
                         max = 10,
-                        value = 1),
-            sliderInput("range1end",
-                        label = "Max Value for Operand 1",
+                        value = c(1,5)),
+            sliderInput("range2",
+                        label = "Value Range for Operand 2",
                         min = 0,
                         max = 10,
-                        value = 5),
-            sliderInput("range2start",
-                        label = "Min Value for Operand 2",
-                        min = 0,
-                        max = 10,
-                        value = 1),
-            sliderInput("range2end",
-                        label = "Max Value for Operand 2",
-                        min = 0,
-                        max = 10,
-                        value = 5),
+                        value = c(1,5)),
             actionButton("generate", "Generate Problems")
         ),
 
@@ -74,11 +64,11 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   range1 <- eventReactive(input$generate, {
-    input$range1start:input$range1end
+    input$range1[1]:input$range1[2]
   })
   
   range2 <- eventReactive(input$generate, {
-    input$range2start:input$range2end
+    input$range2[1]:input$range2[2]
   })
   
   problem_list <- reactive({

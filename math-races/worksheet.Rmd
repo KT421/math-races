@@ -1,5 +1,5 @@
 ---
-title: "Math Races Worksheet"
+title: "Math Races!"
 output:   html_document
 params:
   n: NA
