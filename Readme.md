@@ -3,7 +3,8 @@
 This is a very simple shiny app designed to generate math worksheets for my kids.
 
 The functional version is at https://kt421.shinyapps.io/math-races/ but that is a
-free shiny.io account so if this gets popular then it will probably be down.
+free shiny.io account so if this gets popular then it will probably be down. You can
+clone the repo and run it locally if the shiny.io site is throttled or locked.
 
 Right now it supports addition and subtraction with operands between 0 and 10, and
 when Subtraction is selected it will disallow negative numbers in the answers 
