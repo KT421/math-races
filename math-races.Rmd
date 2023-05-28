@@ -28,25 +28,71 @@ Multiplication and Division
 
 addition_problem <- function(range1 = 1:5, range2 = 1:5) {
   operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
-  operand2 <- ifelse(length(range2) == 1, range1, sample(range2,1))
+  operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
   paste(operand1, "+", operand2, "=")
 }
 
 # Subtraction
 subtraction_problem <- function(range1 = 1:5, range2 = 1:5, allow_negatives = F) {
   operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
-  operand2 <- ifelse(length(range2) == 1, range1, sample(range2,1))
+  operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
   
   if (all(!allow_negatives, operand2 > operand1)) {
     while (operand2 > operand1) {
-    operand2 <- sample(range2,1)
+      operand2 <- sample(range2,1)
     }
   }
   
   paste(operand1, "-", operand2, "=")
 }
 
+
 ```
 
 
+
+# idea
+
+Maybe an entirely different approach?
+
+Generate operand 1 and 2, select operator, if the operator is '-' then check for negatives
+
+```{r}
+# named list for replacement
+operation_lookup <- c("Addition" = "+",
+                      "Subtraction" = "-",
+                      "Multiplication" = "*")
+
+# make problem
+generate_problem <- function(range1,range2,operations,allow_negatives = F) {
+  
+  operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
+  operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
+  operation <- ifelse(length(operations) == 1, operations, sample(operations,1))
+  
+  # reroll if subtraction
+  if (all(!allow_negatives, operand2 > operand1, operation == "Subtraction")) {
+    while (operand2 > operand1) {
+      operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
+      operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
+    }
+  }
+  
+  
+  paste(operand1, operation_lookup[operation], operand2, "=")
+  
+}
+
+```
+
+```{r}
+# testing
+
+range1 <- 1:10
+range2 <- 5
+operations <- c("Subtraction","Addition")
+
+generate_problem(range1, range2, operations)
+
+```
 
