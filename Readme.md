@@ -7,6 +7,7 @@ free shiny.io account so if this gets popular then it will probably be down. Fee
 free to clone this repo and run it locally (R/RStudio required but free) if that's 
 the case.
 
+
 Current Features:
 - Addition and Subtraction with operands between 0 and 10
 - Subtraction mode disallows negative numbers in the answers. For example, "4 - 5 =" will be excluded. 
@@ -22,3 +23,4 @@ Planned Features (in no particular order):
 - Multiplication
 - Division
 - Selection of multiple operators for the same worksheet
+
