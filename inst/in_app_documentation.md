@@ -1,4 +1,4 @@
-This app is designed to produce math worksheets for my kids. The source code can be found at https://github.com/KT421/math-races/
+This app is designed to produce math worksheets for my kids. The source code can be found at https://github.com/KT421/mathraces/
 
 To use it, select one or more operations, give ranges for the operands (the numbers in the math problem) and click the "Generate Problems" button. If you like the problem list generated, click the "Download Printable" button and save and print the produced HTML file. 
 
