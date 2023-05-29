@@ -12,8 +12,8 @@ want to use it.
 To run this app locally:
 
 -   Install R/Rstudio
-    (<https://rstudio-education.github.io/hopr/starting.html>)[[Step-by-step
-    guide](https://rstudio-education.github.io/hopr/starting.html){.uri}]
+    [Step-by-step
+    guide](https://rstudio-education.github.io/hopr/starting.html)
 -   Install from github using `devtools::install_github("KT421/mathraces")`
 -   Launch the shiny app with `mathraces::math_races()`
 
