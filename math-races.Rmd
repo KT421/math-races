@@ -61,16 +61,17 @@ Generate operand 1 and 2, select operator, if the operator is '-' then check for
 # named list for replacement
 operation_lookup <- c("Addition" = "+",
                       "Subtraction" = "-",
-                      "Multiplication" = "*")
+                      "Multiplication" = "*", 
+                      "Division" = "÷")
 
 # make problem
-generate_problem <- function(range1,range2,operations,allow_negatives = F) {
+generate_problem <- function(range1,range2,operations,allow_negatives = F, div_remainders = F) {
   
   operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
   operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
   operation <- ifelse(length(operations) == 1, operations, sample(operations,1))
   
-  # reroll if subtraction
+  # rerolls for subtraction - negative answers
   if (all(!allow_negatives, operand2 > operand1, operation == "Subtraction")) {
     while (operand2 > operand1) {
       operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
@@ -78,6 +79,19 @@ generate_problem <- function(range1,range2,operations,allow_negatives = F) {
     }
   }
   
+  # rerolls for division
+  # no divide by zero plz
+  if (all(operation == "Division", operand2 == 0)) {
+    operand2 <- 1
+  }
+  # reroll if we don't want remainders
+  if (all(!div_remainders, operand1 %% operand2 != 0, operation == "Division")) {
+    while (operand1 %% operand2 != 0) {
+      operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
+      operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
+        if (operand2 == 0) operand2 <- 1
+    }
+  }
   
   paste(operand1, operation_lookup[operation], operand2, "=")
   
@@ -88,11 +102,15 @@ generate_problem <- function(range1,range2,operations,allow_negatives = F) {
 ```{r}
 # testing
 
-range1 <- 1:10
-range2 <- 5
-operations <- c("Subtraction","Addition")
+range1 <- 1:1000
+range2 <- 0:10
+operations <- c("Division")
 
 generate_problem(range1, range2, operations)
+
+operand1 <- 1
+operand2 <- 5
+
 
 ```
 
