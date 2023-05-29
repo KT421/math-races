@@ -32,9 +32,7 @@ generate_problem <- function(range1,range2,operations,allow_negatives = F, div_r
       operand1 <- ifelse(length(range1) == 1, range1, sample(range1,1))
       operand2 <- ifelse(length(range2) == 1, range2, sample(range2,1))
         # no divide by zero in the reroll plskthx -- yes this is stupid. I will come up with a better way.
-      if (all(operation == "Division", operand2 == 0)) {
-        operand2 <- 1
-      }
+      if (operand2 == 0) operand2 <- 1
     }
   }
   
