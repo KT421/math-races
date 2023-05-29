@@ -112,5 +112,11 @@ operand1 <- 1
 operand2 <- 5
 
 
+     problems <- replicate(20, generate_problem(sample(operation,1)),
+                                              range1 = range1, 
+                                              range2 = range2,
+                                              allow_negatives = F,
+                                              div_remainders = F)
+
 ```
 

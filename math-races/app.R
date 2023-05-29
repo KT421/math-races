@@ -113,10 +113,11 @@ server <- function(input, output) {
   problem_list <- reactive({
   
       problems <- replicate(20, 
-                            generate_problem(sample(operation(),1),
-                                              range1 = range1(), 
+                            generate_problem(range1 = range1(), 
                                               range2 = range2(),
-                                              allow_negatives = allow_negatives()))
+                                              operations = sample(operation(),1),
+                                              allow_negatives = allow_negatives(),
+                                              div_remainders = div_remainders()))
 
   })
   
